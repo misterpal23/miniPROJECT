@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KeyRush — Typing Test (Time mode)</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container" role="main">
+    <header class="header">
+      <div>
+        <h1 class="title">KeyRush</h1>
+        <p class="subtitle">Time-based typing test — monkeytype-inspired, lightweight.</p>
+      </div>
+
+      <div class="top-controls">
+        <label class="toggle-wrap">
+          <input id="darkToggle" type="checkbox" aria-label="Toggle dark mode">
+          <span class="toggle-ui">Dark</span>
+        </label>
+      </div>
+    </header>
+
+    <section class="card" aria-live="polite">
+      <div class="controls-row">
+        <div class="left-controls">
+          <button id="newTextBtn" class="btn">New Text</button>
+          <button id="restartBtn" class="btn alt">Restart</button>
+
+          <label class="option-label">
+            <span>Time</span>
+            <select id="timeSelect" aria-label="Select test duration">
+              <option value="15">15s</option>
+              <option value="30" selected>30s</option>
+              <option value="60">60s</option>
+              <option value="120">120s</option>
+              <option value="300">300s</option>
+            </select>
+          </label>
+
+          <label class="option-label">
+            <span>Words</span>
+            <select id="wordsSelect" aria-label="Number of words to preload">
+              <option value="200">200</option>
+              <option value="400" selected>400</option>
+              <option value="800">800</option>
+              <option value="1600">1600</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="stats" aria-hidden="true">
+          <div class="stat big">
+            <div class="stat-title">WPM</div>
+            <div id="wpm" class="stat-value">0</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-title">Time</div>
+            <div id="timer" class="stat-value small">00:30</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-title">Acc</div>
+            <div id="accuracy" class="stat-value small">100%</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-title">✖</div>
+            <div id="mistakes" class="stat-value small">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="textContainer" class="text-container" aria-label="Typing text">
+        <div id="loader" class="loader">Preparing text…</div>
+      </div>
+
+      <div class="progress-wrap" aria-hidden="true">
+        <div class="progress-bar" id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
+      <textarea id="inputArea" class="input-area" placeholder="Start typing to begin the timer..." rows="5" autocomplete="off" spellcheck="false" aria-label="Typing input"></textarea>
+
+      <div class="footer-row">
+        <div class="note">Tip: Timer starts on the first keystroke. When time ends the test locks automatically.</div>
+      </div>
+
+      <div id="resultOverlay" class="result-overlay" role="status" aria-live="polite" hidden>
+        <div class="result-card">
+          <h3>Time's up</h3>
+          <div class="result-grid">
+            <div><strong>WPM</strong><div id="resultWpm" class="result-big">0</div></div>
+            <div><strong>Accuracy</strong><div id="resultAccuracy">0%</div></div>
+            <div><strong>Keystrokes</strong><div id="resultKeys">0</div></div>
+            <div><strong>Correct chars</strong><div id="resultCorrect">0</div></div>
+          </div>
+          <div class="result-actions">
+            <button id="retryBtn" class="btn">Try again</button>
+            <button id="newBtn" class="btn alt">New text</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <small class="footer-end">AAPDA — Aditya Pal • Deepanshu Lamba • Priyanshu Gautam • Mohammed Atif • Ayush Rastogi</small>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
